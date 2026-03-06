@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from strawberry.fastapi import GraphQLRouter
 from sqlalchemy.orm import Session
 
@@ -24,6 +25,14 @@ Base.metadata.create_all(bind=engine)
 app = FastAPI(
     title=settings.app_name,
     debug=settings.debug
+)
+
+# CORS — allow Streamlit Cloud and local dev
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],   # tighten to your Streamlit URL in production if needed
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
 )
 
 

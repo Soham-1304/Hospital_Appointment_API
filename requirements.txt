@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+strawberry-graphql
+sqlalchemy
+psycopg2-binary
+pydantic
+pydantic-settings
+python-dateutil
+python-dotenv
+streamlit
+requests
